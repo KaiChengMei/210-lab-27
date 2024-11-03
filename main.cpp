@@ -3,19 +3,57 @@
 #include <vector>
 using namespace std;
 
-void display(map<string, tuple<int, string, string>> villagedata)
-void add(map<string, tuple<int, string, string>> villagedata)
-void delete(map<string, tuple<int, string, string>> villagedata)
-void increase(map<string, tuple<int, string, string>> villagedata)
-void decrease(map<string, tuple<int, string, string>> villagedata)
-void search(map<string, tuple<int, string, string>> villagedata)
+void display(map<string, tuple<int, string, string>> villagerdata) {
+    cout << "Villager details: " ;
+    for (auto& pair : villagerdata) {
+        auto& [friendship, species, catchphrase] = pair.second;
+        cout << pair.first << "[" << friendship << "," << species << "," << catchphrase << "]" << endl ;
+    }
+}
+
+void add(map<string, tuple<int, string, string>> villagerdata) {
+    string name, species, catchphrase;
+    int friendship;
+    cout << "Villager name: " ;
+    cin >> name;
+    cout << endl << "Friendship level (0-10): ";
+    cin >> friendship;
+    cout << "Species: ";
+    cin.ignore();
+    getline(cin, species);
+    cout << "Catchphrase: ";
+    getline(cin, catchphrase);
+
+    villagerdata[name] = make_tuple(friendship, species, catchphrase);
+    cout << name << " added." << endl;
+}
+
+void delete(map<string, tuple<int, string, string>> villagerdata) {
+    string name;
+    cout << "Enter the name of the villager to delete: " ;
+    cin >> name;
+    villagerData.erase(name);
+    cout << name << "deleted." << endl;
+}
+
+void increase(map<string, tuple<int, string, string>> villagerdata) {
+
+}
+
+void decrease(map<string, tuple<int, string, string>> villagerdata) {
+
+}
+
+void search(map<string, tuple<int, string, string>> villagerdata) {
+
+}
 
 
 
 int main() {
 
     // declarations
-    map<string, tuple<int, string, string>> villagedata;
+    map<string, tuple<int, string, string>> villagerdata;
     int choice;
     do {
         cout << "1. Add Villager" << endl << "2. Delete Villager" << endl << "3. Increase Friendship" << endl << 
