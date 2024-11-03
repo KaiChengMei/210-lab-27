@@ -4,7 +4,7 @@
 using namespace std;
 
 void display(map<string, tuple<int, string, string>> villagerdata) {
-    cout << "Villager details: " ;
+    cout << "Villager details: " << endl;
     for (auto& pair : villagerdata) {
         auto& [friendship, species, catchphrase] = pair.second;
         cout << pair.first << "[" << friendship << "," << species << "," << catchphrase << "]" << endl ;
@@ -25,15 +25,15 @@ void add(map<string, tuple<int, string, string>> villagerdata) {
     getline(cin, catchphrase);
 
     villagerdata[name] = make_tuple(friendship, species, catchphrase);
-    cout << name << " added." << endl;
+    cout << endl << name << " added." << endl;
 }
 
-void delete(map<string, tuple<int, string, string>> villagerdata) {
+void deletev(map<string, tuple<int, string, string>> villagerdata) {
     string name;
     cout << "Enter the name of the villager to delete: " ;
     cin >> name;
-    villagerData.erase(name);
-    cout << name << "deleted." << endl;
+    villagerdata.erase(name);
+    cout << endl << name << "deleted." << endl;
 }
 
 void increase(map<string, tuple<int, string, string>> villagerdata) {
@@ -71,8 +71,9 @@ void search(map<string, tuple<int, string, string>> villagerdata) {
     string name;
     cout << "Enter the name of the villager to search: ";
     cin >> name;
+    auto it = villagerdata.find(name);
     if (it != villagerdata.end()) {
-        auto it = villagerdata.find(name)= it->second;
+        auto [friendship, species, catchphrase] = it->second;
         cout << "Found " << name << "[" << friendship << "," << species << "," << catchphrase << "]" << endl ;
     }
     else {
@@ -94,20 +95,25 @@ int main() {
         switch (choice) {
             case 1:
                 add(villagerdata);
+                break;
             case 2:
-                delete(villagerdata);
+                deletev(villagerdata);
+                break;
             case 3:
                 increase(villagerdata);
+                break;
             case 4:
                 decrease(villagerdata);
+                break;
             case 5:
                 search(villagerdata);
+                break;
             case 6:
             cout << "ByeBye....." << endl;
             break;
         }
         display(villagerdata);
-    };
+    } while (choice != 6);
     return 0;
 
 }
