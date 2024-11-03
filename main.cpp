@@ -37,14 +37,42 @@ void delete(map<string, tuple<int, string, string>> villagerdata) {
 }
 
 void increase(map<string, tuple<int, string, string>> villagerdata) {
+    string name;
+    cout << "Enter the name of the villager to increase friendship: ";
+    cin >> name;
+    auto it = villagerdata.find(name);
+    auto& [friendship, species, catchphrase] = it->second;
+    if (friendship < 10) {
+        friendship++;
+        cout << "Friendship succesfully increased for " << name << endl;
+    }
+    else {
+        cout << "Friendship is already at max for " << name << endl;
+    }
 
 }
 
 void decrease(map<string, tuple<int, string, string>> villagerdata) {
-
+    string name;
+    cout << "Enter the name of the villager to increase friendship: ";
+    cin >> name;
+    auto it = villagerdata.find(name);
+    auto& [friendship, species, catchphrase] = it->second;
+    if (friendship > 0) {
+        friendship--;
+        cout << "Friendship succesfully decreased for " << name << endl;
+    }
+    else {
+        cout << "Friendship is already at min for " << name << endl;
+    }
 }
 
 void search(map<string, tuple<int, string, string>> villagerdata) {
+    string name;
+    cout << "Enter the name of the villager to search: ";
+    cin >> name;
+    if ()
+    auto it = villagerdata.find(name);
 
 }
 
